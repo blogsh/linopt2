@@ -1,0 +1,10 @@
+model uh-stor.mod;
+#data uh-stor.dat;
+data uh-gen.dat;
+option solver cplex;	
+
+solve;
+
+print Cost;
+print {t in 1..T} z[t];
+print {i in Components, t in 1..T} x[i,t];
