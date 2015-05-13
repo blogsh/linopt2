@@ -1,0 +1,12 @@
+model paper_rev.mod;
+data paper_rev.dat;
+option solver cplex;	
+
+option cplex_options 'timing=1' ' mipdisplay = 2' ' mipinterval = 50';
+solve;
+
+option omit_zero_rows 1;
+
+display Cost;
+display sum{t in 1..T} z[t];
+display sum{i in Components, (s,t) in I} x[i,s,t];
